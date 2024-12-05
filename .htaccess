@@ -1,0 +1,12 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_URI} ^/app/api/
+RewriteRule ^api/(.*)$ api/server.php?module=$1 [L,QSA]
+
+RewriteCond %{REQUEST_URI} ^/app/?$
+RewriteRule ^$ public/index.php [L]
+
+
+RewriteRule ^(.*)$ public/index.php [L,QSA]
+
+
