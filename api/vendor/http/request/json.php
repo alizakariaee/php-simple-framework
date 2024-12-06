@@ -1,7 +1,7 @@
 <?php
 namespace Request;
 
-class json{
+class Json{
 
 
 public function __construct(
@@ -26,7 +26,7 @@ public function __construct(
        }else{
         $data = json_decode([],true);
        }
-        return new json($data);
+        return new Json($data);
     }
 
 

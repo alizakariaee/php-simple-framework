@@ -23,7 +23,7 @@ abstract class Routing extends Http{
         //$paramType = ($paramType instanceof ReflectionNamedType) ? $paramType->getName() : "Mixed";
         $defaultValue = $parameter->isDefaultValueAvailable() ? $parameter->getDefaultValue() : null; 
         if($paramType == 'Request\Body'){
-
+          $queryParams[$paramName]  = call_user_func([\Request\Body::class,'data'],$defaultValue);
         }else if($paramType == 'Request\Json'){
           $queryParams[$paramName]  = call_user_func([\Request\Json::class,'data'],$defaultValue);
         }
@@ -41,4 +41,25 @@ abstract class Routing extends Http{
       }
       return false;
     }
+
+    
+    
+    public static function Post(string $route,array $module): mixed 
+    {
+      if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+        return self::Handler($route,$module);
+      }
+      return false;
+    }
+
+
+
+    public static function Put(string $route,array $module): mixed 
+    {
+      if ($_SERVER['REQUEST_METHOD'] === 'PUT'){
+        return self::Handler($route,$module);
+      }
+      return false;
+    }
+
 }
