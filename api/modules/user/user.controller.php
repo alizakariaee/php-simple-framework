@@ -6,6 +6,7 @@ use Module\userService as userService;
 use Http\BaseController;
 use Request\Body;
 use Request\Json;
+use Request\Headers;
 
 final class userController extends BaseController implements userInterface {
 
@@ -35,6 +36,12 @@ final class userController extends BaseController implements userInterface {
     ): mixed {
         
         return $this->end("User $id Info : " . print_r($data->getAll(),true));
+    }
+
+
+    public function checkToken(Headers $headers) : mixed
+    {
+       return $headers->authorization->bearer();
     }
 
 }
