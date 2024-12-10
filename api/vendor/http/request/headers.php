@@ -4,8 +4,13 @@ namespace Request;
 
 class Headers{
 
+   public private(set) mixed $authorization = '';
 
-    public function authorization() : mixed
+    public function __construct(){
+     $this->authorization = $this->header_authorization();
+    }
+
+    private function header_authorization() : mixed
     {
        $ret = new myStdClass();
        $jwt = '';
