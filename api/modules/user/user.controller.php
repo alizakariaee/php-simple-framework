@@ -41,7 +41,7 @@ final class userController extends BaseController implements userInterface {
 
     public function checkToken(Headers $headers) : mixed
     {
-       return $headers->authorization->bearer();
+       return $headers->authorization->Bearer();
     }
 
 }
