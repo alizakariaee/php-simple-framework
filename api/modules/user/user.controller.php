@@ -1,4 +1,5 @@
 <?php
+
 namespace Module;
 
 use controllerInterface\User as userInterface;
@@ -8,40 +9,44 @@ use Request\Body;
 use Request\Json;
 use Request\Headers;
 
-final class userController extends BaseController implements userInterface {
+final class userController extends BaseController implements userInterface
+{
 
-  private const userData = [
-    'fname' => 'string|min:3',
-    'lname' => string
-  ];
+    private const userData = [
+        'fname' => 'string|min:3',
+        'lname' => string
+    ];
 
     public function __construct(
-     private ?userService $userService = null
-    ){
+        private ?userService $userService = null
+    ) {
         $this->userService = $userService ?: new userService();
     }
 
-
-    public function find($id): mixed {
+    /**
+     * @return mixed
+     */
+    public function find($id): mixed
+    {
         return $this->json($this->userService->findById($id));
     }
 
-    public function login(Body $data): mixed {
+    public function login(Body $data): mixed
+    {
         return true;
     }
 
     public function update(
-        Json $data=self::userData, 
-        int $id=0
+        Json $data = self::userData,
+        int $id = 0
     ): mixed {
-        
-        return $this->end("User $id Info : " . print_r($data->getAll(),true));
+
+        return $this->end("User $id Info : " . print_r($data->getAll(), true));
     }
 
 
-    public function checkToken(Headers $headers) : mixed
+    public function checkToken(Headers $headers): mixed
     {
-       return $headers->authorization->Bearer();
+        return $headers->authorization->Bearer();
     }
-
 }
