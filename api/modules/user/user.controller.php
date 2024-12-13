@@ -47,6 +47,7 @@ final class userController extends BaseController implements userInterface
 
     public function checkToken(Headers $headers): mixed
     {
+        $getData = $this->httpData();
         return $headers->authorization->Bearer();
     }
 }
