@@ -1,19 +1,18 @@
 <?php
+
 namespace Http;
 
-trait request{
-    
-
-    public function httpQuery(){
-
-    }
+trait request
+{
 
 
-    public function httpParam(){
+    public function httpQuery() {}
 
-    }
 
-    public function httpData(){
+    public function httpParam() {}
 
+    public function httpData($data = null): \Request\Body
+    {
+        return \Request\Body::data($data);
     }
 }
