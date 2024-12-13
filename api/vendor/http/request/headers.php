@@ -12,7 +12,7 @@ class Headers{
 
     private function header_authorization() : mixed
     {
-       $ret = new myStdClass();
+       $ret = new \myStdClass();
        $jwt = '';
        $basic = '';
        $apiKey = '';

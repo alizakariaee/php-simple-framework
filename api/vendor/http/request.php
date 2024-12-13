@@ -4,16 +4,16 @@ namespace Http;
 trait request{
     
 
-    public function query(){
+    public function httpQuery(){
 
     }
 
 
-    public function param(){
+    public function httpParam(){
 
     }
 
-    public function data(){
+    public function httpData(){
 
     }
 }
