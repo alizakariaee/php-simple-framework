@@ -7,6 +7,7 @@ abstract class Routing extends Http{
       if(isset($_GET['module']) && !empty($_GET['module']) && trim(strtolower($_GET['module'])) == trim(strtolower($route))){
 
     [$className, $methodName] = $module;
+    $reflectionClass = new \ReflectionClass($className::class);
     $reflectionMethod = new \ReflectionMethod($className,$methodName);
 
     
