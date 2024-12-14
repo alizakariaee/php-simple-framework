@@ -8,7 +8,10 @@ use Http\BaseController;
 use Request\Body;
 use Request\Json;
 use Request\Headers;
+use Auth\useGuard;
+use Auth\usePermissions;
 
+#[useGuard('auth')]
 final class userController extends BaseController implements userInterface
 {
 
@@ -23,9 +26,7 @@ final class userController extends BaseController implements userInterface
         $this->userService = $userService ?: new userService();
     }
 
-    /**
-     * @return mixed
-     */
+    #[usePermissions('admin','editor')]
     public function find($id): mixed
     {
         return $this->json($this->userService->findById($id));
