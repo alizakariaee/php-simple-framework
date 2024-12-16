@@ -26,7 +26,7 @@ final class userController extends BaseController implements userInterface
         $this->userService = $userService ?: new userService();
     }
 
-    #[usePermissions('admin','editor')]
+    #[usePermissions('admin', 'editor')]
     public function find($id): mixed
     {
         return $this->json($this->userService->findById($id));
