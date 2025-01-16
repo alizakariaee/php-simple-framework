@@ -10,6 +10,10 @@ class Headers{
      $this->authorization = $this->header_authorization();
     }
 
+    public static function authorization() : mixed {
+        return (new self())->header_authorization();
+    }
+
     private function header_authorization() : mixed
     {
        $ret = new \myStdClass();
