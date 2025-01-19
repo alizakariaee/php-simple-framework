@@ -7,5 +7,18 @@ use Auth\BaseGuard;
 class AuthGuard extends BaseGuard
 {
 
-    protected $alg = 'jwt';
+    protected $alg = 'H256';
+
+    /* protected $JWT_SECRET = env('JWT_SECRET','my_secret'); */
+
+
+    /* If use custom payload
+    protected $payload = [
+      'username',
+      'userId',
+      'email',
+      'avatar',
+      'role'
+    ];
+    */
 }

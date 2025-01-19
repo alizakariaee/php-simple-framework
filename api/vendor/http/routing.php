@@ -27,6 +27,8 @@ abstract class Routing extends Http{
           $queryParams[$paramName]  = call_user_func([\Request\Body::class,'data'],$defaultValue);
         }else if($paramType == 'Request\Json'){
           $queryParams[$paramName]  = call_user_func([\Request\Json::class,'data'],$defaultValue);
+        }else if($paramType == 'Request\Headers'){
+          $queryParams[$paramName] = new \Request\Headers();
         }
         }
     }    
