@@ -9,7 +9,7 @@ class AuthGuard extends BaseGuard
 
     protected $alg = 'H256';
 
-    /* protected $JWT_SECRET = env('JWT_SECRET','my_secret'); */
+    /* x protected $JWT_SECRET = env('JWT_SECRET','my_secret'); */
 
 
     /* If use custom payload

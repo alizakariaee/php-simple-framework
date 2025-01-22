@@ -7,11 +7,11 @@ abstract class BaseGuard {
 
     public function verify(string $token){
 
-        $result = \Request\Auth::Verify($token);
+        return \Request\Auth::Verify($token);
 
-        if($result){
+        /* if($result){
           return new \Request\User($result);
         }
-        return false;
+        return false; */
     }
 }

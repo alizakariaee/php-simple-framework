@@ -24,7 +24,7 @@ public function __construct(
          $data = (new \Validation\DataSanitizer($ret))->getData();
         }
        }else{
-        $data = json_decode([],true);
+        $data = []; //json_decode([],true);
        }
         return new Json($data);
     }
@@ -38,7 +38,7 @@ public function __construct(
 
     public function get(string $k): mixed
     {
-        retrun (isset($this->data[$k]))? $this->data[$k] : null;
+        return (isset($this->data[$k]))? $this->data[$k] : null;
     }
 
     public function __set ( string $name , mixed $value ) : void
