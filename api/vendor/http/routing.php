@@ -33,6 +33,20 @@ abstract class Routing extends Http{
         }
     }    
 
+
+    $classAttributes = $reflectionClass->getAttributes(\Auth\UseGuard::class);
+    foreach ($classAttributes as $attribute) {
+        $guardClass = $attribute->newInstance();
+        $guardName = $guardClass->guardName;
+        $className = '\\Guards\\' . $guardName . 'Guard';
+        $guard = new $className();
+        $userObj = $guard->verify(\Request\Headers::Authorization()->Bearer());
+        if($userObj){
+
+        }
+
+    }   
+
     if ($reflectionMethod->isStatic()) {
         return call_user_func_array([$className, $methodName], $queryParams);
     }
