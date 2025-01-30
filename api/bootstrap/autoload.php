@@ -65,6 +65,11 @@ spl_autoload_register(function ($class) use($delimiter) {
         $namespace_dir = 'vendor'.$delimiter.'http'.$delimiter.'validation';
         $class_file    = $dir_list[1];
     }
+
+    if($dir_list[0] == 'guards'){
+        $namespace_dir = 'guards'.$delimiter.str_replace('guard','',str_replace('Permissions','',$dir_list[1]));
+        $class_file = $dir_list[1];
+    }
     
 
     $correct_dir = str_replace($delimiter.'bootstrap','',__DIR__);

@@ -38,11 +38,14 @@ abstract class Routing extends Http{
     foreach ($classAttributes as $attribute) {
         $guardClass = $attribute->newInstance();
         $guardName = $guardClass->guardName;
-        $className = '\\Guards\\' . $guardName . 'Guard';
-        $guard = new $className();
+        $guardClassName = '\\Guards\\' . $guardName . 'Guard';
+        $guard = new $guardClassName();
         $userObj = $guard->verify(\Request\Headers::Authorization()->Bearer());
         if($userObj){
-
+        $permissionClassName = '\\Guards\\' . $guardName . 'Permissions';
+        $permissions = new $permissionClassName();
+        $checkPermission = $permissions->check();
+        
         }
 
     }   
